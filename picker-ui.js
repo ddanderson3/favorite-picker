@@ -455,29 +455,38 @@
         return $('<li></li>').append(itemContent);
     };
 
-    PickerUI.prototype.getItemElem = function(item, settings) {
-        /**
-         * Creates and returns an element or jQuery object for an item,
-         * to be inserted into the evaluating element.
-         * The behaviour of this function can be overridden with the
-         * getItemElem setting. By default, if the getImageUrl setting
-         * is set, it returns an image with that URL; otherwise, it simply
-         * returns a plain text list item.
-         */
-        var itemContent;
-        var itemName;
-        itemName = item.name || item.id;
-        if (this.options.getItemElem) {
-            return $(this.options.getItemElem(item, settings)).addClass('item').data('item', item.id);
-        }
-        if (item.image || this.options.getItemImageUrl) {
-            itemContent = $('<img src="' + (this.options.getItemImageUrl ? this.options.getItemImageUrl(item, settings) : item.image) + '" alt="' + itemName + '" title="' + itemName + '">');
-        }
-        else {
-            itemContent = $('<span>' + itemName + '</span>');
-        }
-        return this.wrapItem(itemContent).addClass('item').data('item', item.id);
-    };
+   PickerUI.prototype.getItemElem = function(item, settings) {
+    /**
+     * Creates and returns an element or jQuery object for an item,
+     * to be inserted into the evaluating element.
+     */
+    var itemContent;
+    var itemName;
+    itemName = item.name || item.id;
+    
+    if (this.options.getItemElem) {
+        return $(this.options.getItemElem(item, settings)).addClass('item').data('item', item.id);
+    }
+
+    // --- START MODIFIED LOGIC ---
+    // 1. Create a container for both the image and the name
+    itemContent = $('<div></div>'); 
+
+    // 2. Check for image and add it to the container if available
+    if (item.image || this.options.getItemImageUrl) {
+        var imageUrl = this.options.getItemImageUrl ? this.options.getItemImageUrl(item, settings) : item.image;
+        var imageElem = $('<img src="' + imageUrl + '" alt="' + itemName + '" title="' + itemName + '">');
+        itemContent.append(imageElem);
+    }
+    
+    // 3. Add the name/title *after* the image (or first if no image)
+    var nameElem = $('<span>' + itemName + '</span>').addClass('item-name');
+    itemContent.append(nameElem);
+    // --- END MODIFIED LOGIC ---
+    
+    // Wrap the new container, add the 'item' class, and store the item data.
+    return this.wrapItem(itemContent).addClass('item').data('item', item.id);
+};
 
     PickerUI.prototype.makeResetButton = function(text) {
         /**
