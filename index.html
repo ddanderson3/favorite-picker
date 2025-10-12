@@ -142,8 +142,28 @@ button.disabled:hover {
 }
 /* Target the name element within the item */
 .item-list li .item-name {
-    /* ... keep the other styles you need ... */
-    color: #FFF !important; /* Force the text color to white */
+    /* 1. REDUCE FONT SIZE to make it fit */
+    font-size: 7pt !important; 
+    font-weight: bold;
+    color: #FFF !important; 
+    
+    /* 2. CENTER ALIGN AND CONTROL LINE HEIGHT */
+    text-align: center;
+    display: block; 
+    line-height: 1.2;
+    padding: 0 2px;
+    
+    /* 3. ALLOW WRAPPING (CRITICAL FOR FULL NAMES) */
+    /* Remove single-line restrictions to show the full name */
+    white-space: normal !important; /* Forces wrapping */
+    overflow: visible !important; /* Ensures content isn't hidden */
+    text-overflow: clip !important; /* Ensures no '...' is added */
+    
+    /* OPTIONAL: Adjust positioning if text is too high/low */
+    position: absolute;
+    bottom: 0; /* Align to the bottom of the circle */
+    left: 0;
+    width: 100%;
 }
     
 .item-list li img {
