@@ -65,7 +65,7 @@ button.disabled:hover {
     /* Keeping the existing border for selection */
     border: 3px solid #FFD700;
     /* You might want a background change for better visibility */
-    background: #e6f7ff !important; /* Use !important if hover is overriding it */
+    background: #990000 !important; /* Use !important if hover is overriding it */
 }
 
 
@@ -140,17 +140,16 @@ button.disabled:hover {
     background:#990000;
     color:#000;
 }
-
+/* Target the name element within the item */
+.item-list li .item-name {
+    /* ... keep the other styles you need ... */
+    color: #FFF !important; /* Force the text color to white */
+}
+    
 .item-list li img {
     vertical-align:middle;
     max-height:100%;
     max-width:100%;
-}
-
-.item-list li span {
-    display:inline-block;
-    vertical-align:middle;
-    line-height:1.2;
 }
 
 @media (max-width:636px) {
