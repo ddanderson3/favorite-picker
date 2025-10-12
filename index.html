@@ -58,7 +58,74 @@ button.disabled:hover {
     padding:10px;
     overflow:hidden;
 }
+/* Targets the main list item wrapper */
+.item-list li { 
+    /* The existing 'item-list li' styling is making your items round (border-radius:100%)
+       and fixed size (height:100px; width:100px;). 
+       The styles below override the line-height centering and set up 
+       Flexbox for column stacking of the image and name.
+    */
+    display: flex;
+    flex-direction: column; /* Stack image above name */
+    align-items: center;    /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    text-align: center;
+    line-height: normal; /* Override the 100px line-height for vertical centering */
+    
+    /* You can adjust padding if needed */
+    padding: 5px; 
+}
 
+/* Style for when the item is selected (assuming 'selected' class is applied by your JS) */
+#evaluating li.selected { 
+    /* Keeping the existing border for selection */
+    border: 3px solid #FFD700;
+    /* You might want a background change for better visibility */
+    background: #e6f7ff !important; /* Use !important if hover is overriding it */
+}
+
+/* Target the image element within the item */
+.item-list li img {
+    /* Set a consistent size for the image */
+    width: 60px; 
+    height: 60px;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 50%; /* Make the images round, like the item container */
+    margin-bottom: 2px; /* Small space between image and name */
+    
+    /* Override existing center alignment styles */
+    vertical-align: top;
+    max-height: 90%; 
+    max-width: 90%;
+}
+
+/* Target the name element (assuming you are adding it with a <span> inside your JS) */
+.item-list li .item-name {
+    font-size: 8pt; /* Adjust size to fit in the small circle */
+    font-weight: bold;
+    color: #FFF; /* Text color against the background */
+    
+    /* Override existing span styles */
+    display: block; 
+    line-height: 1.2;
+    padding: 0 2px; /* Small horizontal padding */
+    
+    /* If the name is too long, you might want to hide the overflow */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+}
+
+/* The existing item-list li span is overriding things, so let's simplify */
+/* Remove the existing generic span rule to avoid conflicts: */
+/* REMOVE:
+.item-list li span {
+    display:inline-block;
+    vertical-align:middle;
+    line-height:1.2;
+}
+*/
 @media (min-width:1024px) {
     /* Put the found favorites beside the picking div when the window is sufficiently large */
     #picking {
