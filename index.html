@@ -58,26 +58,7 @@ button.disabled:hover {
     padding:10px;
     overflow:hidden;
 }
-/* Targets the main list item wrapper */
 
-/* Style for when the item is selected (assuming 'selected' class is applied by your JS) */
-#evaluating li.selected { 
-    /* Keeping the existing border for selection */
-    border: 3px solid #FFD700;
-    /* You might want a background change for better visibility */
-    background: #990000 !important; /* Use !important if hover is overriding it */
-}
-
-
-/* The existing item-list li span is overriding things, so let's simplify */
-/* Remove the existing generic span rule to avoid conflicts: */
-/* REMOVE:
-.item-list li span {
-    display:inline-block;
-    vertical-align:middle;
-    line-height:1.2;
-}
-*/
 @media (min-width:1024px) {
     /* Put the found favorites beside the picking div when the window is sufficiently large */
     #picking {
@@ -102,7 +83,7 @@ button.disabled:hover {
 }
 
 #pick {
-    background:#FFD700;
+    background:#58F;
     color:#FFF;
     font-size:larger;
     font-weight:bold;
@@ -112,11 +93,11 @@ button.disabled:hover {
 }
 
 #pick.disabled {
-    background:#AA9944;
+    background:#ACF;
 }
 
 #pick:hover {
-    background:#CCAA00;
+    background:#ACF;
 }
 
 .item-list {
@@ -135,48 +116,23 @@ button.disabled:hover {
     text-align:center;
     position:relative;
     vertical-align:top;
+    overflow:hidden;
     border-radius:100%;
-    background:#990000;
-    color:#FFF;
+    background:#F7F7F7;
+    color:#000;
 }
 
-/* NEW AND CORRECTED TEXT CENTERING/COLOR */
-.item-list li .item-name {
-    /* Set positioning for full vertical and horizontal centering within the circle */
-    position: absolute;
-    top: 50%;
-    left: 0;
-    /* The trick for perfect vertical centering, now applied to the whole element */
-    transform: translateY(-50%);
-    width: 100%; /* Ensures it fills the width for horizontal centering */
-    
-    /* Text style and wrapping */
-    font-size: 7pt;
-    font-weight: bold;
-    color: #FFF; /* Ensure text is white */
-    text-align: center;
-    white-space: normal;
-    line-height: 1.2;
-    padding: 0 5px; 
-    z-index: 2; /* Ensures it is on top of the background */  
-}
-
-/* NEW AND CORRECTED IMAGE FIT */
 .item-list li img {
-    position: absolute; /* Take the image out of the normal flow */
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); /* Centered both horizontally and vertically */
+    vertical-align:middle;
     max-height:100%;
     max-width:100%;
-    border-radius: 100%; /* Important: Clips the image to the circle */
 }
 
-/* If an item has an image, make the name text transparent/invisible so only the image shows. */
-.item-list li img + .item-name {
-    color: transparent !important;
+.item-list li span {
+    display:inline-block;
+    vertical-align:middle;
+    line-height:1.2;
 }
-
 
 @media (max-width:636px) {
     .item-list {
@@ -211,7 +167,7 @@ button.disabled:hover {
 }
 
 .item-list li:hover {
-    background:#FFD700;
+    background:#CDF;
 }
 
 .item-list.sorting li:hover {
@@ -219,7 +175,7 @@ button.disabled:hover {
 }
 
 #evaluating li.selected {
-    border:3px solid #FFD700;
+    border:3px solid #7AC;
 }
 
 #evaluating, #buttons {
@@ -322,45 +278,45 @@ var items = [
     {id: 'turner', name: 'Myles Turner', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1626167.png'},
     {id: 'buzelis', name: 'Matas Buzelis', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1641824.png'},
     {id: 'jcarter', name: 'Jevon Carter', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628975.png'},
-    {id: 'zcollins', name: 'Zach Collins', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628380.png'},
-    {id: 'dosunmu', name: 'Ayo Dosunmu', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630245.png'},
-    {id: 'essengue', name: 'Noa Essengue', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1642855.png'},
-    {id: 'giddey', name: 'Josh Giddey', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630581.png'},
-    {id: 'mouhamadou', name: 'Mouhamadou Gueye', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1631338.png'},
-    {id: 'huerter', name: 'Kevin Huerter', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628989.png'},
-    {id: 'trejones', name: 'Tre Jones', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630200.png'},
-    {id: 'kawamura', name: 'Yuki Kawamura', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1642530.png'},
-    {id: 'emiller', name: 'Emanuel Miller', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1641801.png'},
-    {id: 'okoro', name: 'Isaac Okoro', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630171.png'},
-    {id: 'olbrich', name: 'Lachlan Olbrich', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1642950.png'},
-    {id: 'jphillips', name: 'Julian Phillips', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1641763.png'},
-    {id: 'jalensmith', name: 'Jalen Smith', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630188.png'},
-    {id: 'dterry', name: 'Dalen Terry', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1631207.png'},
-    {id: 'vucevic', name: 'Nikola Vučević', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/202696.png'},
-    {id: 'cwhite', name: 'Coby White', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1629632.png'},
-    {id: 'pwilliams', name: 'Patrick Williams', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630172.png'},
-    {id: 'jallen', name: 'Jarrett Allen', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628386.png'},
-    {id: 'loball', name: 'Lonzo Ball', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628366.png'},
-    {id: 'tbryant', name: 'Thomas Bryant', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1628418.png'},
-    {id: 'enaruna', name: 'Tristan Enaruna', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1642400.png'},
-    {id: 'garland', name: 'Darius Garland', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1629636.png'},
-    {id: 'khayes', name: 'Killian Hayes', image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1630165.png'},
-    {id: 'dhunter', name: 'DeAndre Hunter', image: 'image'},
-    {id: 'chaneyjohnson', name: 'Chaney Johnson', image: 'image'},
-    {id: 'kopp', name: 'Miller Kopp', image: 'image'},
-    {id: 'merrill', name: 'Sam Merrill', image: 'image'},
-    {id: 'donmitchell', name: 'Donovan Mitchell', image: 'image'},
-    {id: 'mobley', name: 'Evan Mobley', image: 'image'},
-    {id: 'lnance', name: 'Larry Nance Jr', image: 'image'},
-    {id: 'omier', name: 'Norchad Omier', image: 'image'},
-    {id: 'cporterjr', name: 'Craig Porter Jr', image: 'image'},
-    {id: 'proctor', name: 'Tyrese Proctor', image: 'image'},
-    {id: 'strus', name: 'Max Strus', image: 'image'},
-    {id: 'tomlin', name: 'NaeQwan Tomlin', image: 'image'},
-    {id: 'travers', name: 'Luke Travers', image: 'image'},
-    {id: 'jtyson', name: 'Jaylon Tyson', image: 'image'},
-    {id: 'dwade', name: 'Dean Wade', image: 'image'},
-    {id: 'boucher', name: 'Chris Boucher', image: 'image'},
+    {id: 'zcollins', name: 'Zach Collins', image: 'image'},
+    {id: 'dosunmu', name: 'Ayo Dosunmu', image: 'image'},
+    {id: 'essengue', name: 'Noa Essengue', image: 'image'},
+    {id: 'giddey', name: 'Josh Giddey', image: 'image'},
+    {id: 'mouhamadou', name: 'Mouhamadou Gueye', image: 'image'},
+    {id: 'huerter', name: 'Kevin Huerter', image: 'image'},
+    {id: 'trejones', name: 'Tre Jones', image: 'image'},
+    {id: 'kawamura', name: 'Yuki Kawamura', image: 'image'},
+    {id: 'emiller', name: 'Emanuel Miller', image: 'image'},
+    {id: 'okoro', name: 'Isaac Okoro', image: 'image'},
+    {id: 'olbrich', name: 'Lachlan Olbrich', image: 'image'},
+    {id: 'jphillips', name: 'Julian Phillips', image: 'image'},
+    {id: 'jalensmith', name: 'Jalen Smith', image: 'image'},
+    {id: 'dterry', name: 'Dalen Terry', image: 'image'},
+    {id: 'vucevic', name: 'Nikola Vučević', image: 'image'},
+    {id: 'cwhite', name: 'Coby White', image: 'image'},
+    {id: 'pwilliams', name: 'Patrick Williams', image: 'image'},
+    {id: 'jallen', name: 'Jarrett Allen', image: 'image'},
+    {id: 'loball', name: 'Lonzo Ball', image: 'image'},
+    {id: 'tbryant', name: 'Thomas Bryant', image: 'image'},
+    {id: 'enaruna', name: 'Tristan Enaruna'},
+    {id: 'garland', name: 'Darius Garland'},
+    {id: 'khayes', name: 'Killian Hayes'},
+    {id: 'dhunter', name: 'DeAndre Hunter'},
+    {id: 'chaneyjohnson', name: 'Chaney Johnson'},
+    {id: 'kopp', name: 'Miller Kopp'},
+    {id: 'merrill', name: 'Sam Merrill'},
+    {id: 'donmitchell', name: 'Donovan Mitchell'},
+    {id: 'mobley', name: 'Evan Mobley'},
+    {id: 'lnance', name: 'Larry Nance Jr'},
+    {id: 'omier', name: 'Norchad Omier'},
+    {id: 'cporterjr', name: 'Craig Porter Jr'},
+    {id: 'proctor', name: 'Tyrese Proctor'},
+    {id: 'strus', name: 'Max Strus'},
+    {id: 'tomlin', name: 'NaeQwan Tomlin'},
+    {id: 'travers', name: 'Luke Travers'},
+    {id: 'jtyson', name: 'Jaylon Tyson'},
+    {id: 'dwade', name: 'Dean Wade'},
+    {id: 'boucher', name: 'Chris Boucher'},
     {id: 'jbridges', name: 'Jalen Bridges'},
     {id: 'jbrown', name: 'Jaylen Brown'},
     {id: 'kbrown', name: 'Kendall Brown'},
@@ -743,7 +699,7 @@ var items = [
     {id: 'aaronholi', name: 'Aaron Holiday'},
     {id: 'cammatthews', name: 'Cameron Matthews'},
     {id: 'okogie', name: 'Josh Okogie'},
-    {id: 'sengun', name: 'Alperen Şengün'},
+    {id: 'sengun', name: 'Alperen Sengun'},
     {id: 'reedshepp', name: 'Reed Sheppard'},
     {id: 'barismith', name: 'Jabari Smith Jr'},
     {id: 'jaetate', name: 'JaeSean Tate'},
