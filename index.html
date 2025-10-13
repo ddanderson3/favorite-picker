@@ -137,37 +137,46 @@ button.disabled:hover {
     vertical-align:top;
     border-radius:100%;
     background:#990000;
-    color:#000;
+    color:#FFF;
 }
 
-  /* NEW AND CORRECTED */
+/* NEW AND CORRECTED TEXT CENTERING/COLOR */
 .item-list li .item-name {
     /* Set positioning for full vertical and horizontal centering within the circle */
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%); /* The trick for perfect vertical centering */
+    /* The trick for perfect vertical centering, now applied to the whole element */
+    transform: translateY(-50%);
     width: 100%; /* Ensures it fills the width for horizontal centering */
     
     /* Text style and wrapping */
     font-size: 7pt;
     font-weight: bold;
-    color: #FFF;
+    color: #FFF; /* Ensure text is white */
     text-align: center;
     white-space: normal;
     line-height: 1.2;
     padding: 0 5px; 
     z-index: 2; /* Ensures it is on top of the background */  
-}  
+}
+
+/* NEW AND CORRECTED IMAGE FIT */
 .item-list li img {
-    vertical-align:middle;
+    position: absolute; /* Take the image out of the normal flow */
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Centered both horizontally and vertically */
     max-height:100%;
     max-width:100%;
+    border-radius: 100%; /* Important: Clips the image to the circle */
 }
-    /* If an item has an image, make the name text transparent/invisible so only the image shows. */
+
+/* If an item has an image, make the name text transparent/invisible so only the image shows. */
 .item-list li img + .item-name {
     color: transparent !important;
 }
+
 
 @media (max-width:636px) {
     .item-list {
